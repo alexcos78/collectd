@@ -39,11 +39,18 @@ if defined('$influxdb_collectd_host') {
 case $::osfamily {
     'RedHat', 'CentOS':  {
          notify {'You are using CentOS': }
-         include setup::redhat
+         class { 'setup::redhat' :
+           influxdb_collectd_host => $influxdb_collectd_host,
+           influxdb_collectd_port => $influxdb_collectd_port
+         }
+
     }
     'Debian', 'Ubuntu':  {
          notify {'You are using CentOS': }
-         include setup::debian  
+         class { 'setup::debian' :
+           influxdb_collectd_host => $influxdb_collectd_host,
+           influxdb_collectd_port => $influxdb_collectd_port
+         }
     }
     default:  {
          fail("No suitable OS found for this Class:  ${::osfamily}/${::operatingsystem}")
