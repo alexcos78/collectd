@@ -30,6 +30,12 @@ class collectd (
   $influxdb_collectd_port        = "25826",
  ) inherits collectd::params {
 
+if defined('$influxdb_collectd_host') {
+   notify {"Variable influxdb_collectd_host is: $influxdb_collectd_host":}
+} else {
+   fail("Variable influxdb_collectd_host is unset.")
+}
+
 case $::osfamily {
     'RedHat', 'CentOS':  {
          notify {'You are using CentOS': }
@@ -40,7 +46,7 @@ case $::osfamily {
          include setup::debian  
     }
     default:  {
-         fail ("No suitable OS found for this Class:  ${::osfamily}/${::operatingsystem}")
+         fail("No suitable OS found for this Class:  ${::osfamily}/${::operatingsystem}")
     }
 }
 
