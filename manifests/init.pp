@@ -28,9 +28,9 @@
 class collectd (
   $influxdb_collectd_host        = undef,
   $influxdb_collectd_port        = "25826",
-) inherits collectd::params {
+ ) inherits collectd::params {
 
-case $facts['os']['name'] {
+case $::osfamily {
     'RedHat', 'CentOS':  {
          notify {'You are using CentOS': }
          include setup::redhat
@@ -40,7 +40,7 @@ case $facts['os']['name'] {
          include setup::debian  
     }
     default:  {
-         notify {'No suitable OS founf for this Class': }
+         fail ("No suitable OS found for this Class:  ${::osfamily}/${::operatingsystem}")
     }
 }
 

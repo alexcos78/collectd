@@ -26,7 +26,7 @@
 #
 #   include collectd
 
-class accounting::role::redhat (
+class collectd::setup::redhat (
   $influxdb_collectd_host        = undef,
   $influxdb_collectd_port        = "25826",
 ) {
@@ -43,7 +43,7 @@ class accounting::role::redhat (
          owner    => "root",
          group    => "root",
          mode     => '0644',
-         content  => template("templates/collectd.conf-rh.erb"),
+         content  => template('collectd/collectd.conf-rh.erb'),
          require => Package[$collectdpackages],
        }
 
