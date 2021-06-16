@@ -31,10 +31,11 @@ class collectd::setup::debian (
   $influxdb_collectd_port        = "25826",
 ) {
 
-    $collectdpackages= [ 'collectd', 'collectd-virt']
+    $collectdpackages= [ 'collectd', 'collectd-core', 'collectd-dbg', 'collectd-utils', 'libcollectdclient1']
   
     package { $collectdpackages :
               ensure => 'installed',
+              install_options => ['--no-install-recommends'],
                    }
                    
 

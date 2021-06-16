@@ -46,7 +46,7 @@ case $::osfamily {
 
     }
     'Debian', 'Ubuntu':  {
-         notify {'You are using CentOS': }
+         notify {'You are using Ubuntu': }
          class { 'setup::debian' :
            influxdb_collectd_host => $influxdb_collectd_host,
            influxdb_collectd_port => $influxdb_collectd_port
