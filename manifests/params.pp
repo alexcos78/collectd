@@ -1,4 +1,4 @@
-class accounting::params {
+class collectd::params {
     $influxdb_collectd_host = ""
     $influxdb_collectd_port = "25826"
 }  
