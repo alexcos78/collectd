@@ -39,7 +39,7 @@ if defined('$influxdb_collectd_host') {
 case $::osfamily {
     'RedHat', 'CentOS':  {
          notify {'You are using CentOS': }
-         class { 'setup::redhat' :
+         class { 'collectd::setup::redhat' :
            influxdb_collectd_host => $influxdb_collectd_host,
            influxdb_collectd_port => $influxdb_collectd_port
          }
