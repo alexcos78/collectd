@@ -49,13 +49,13 @@ class collectd::setup::debian (
        }
 
 
-    cron {'collectd_flush_cache':
-             ensure      => present,
-             command     => "/usr/bin/killall -SIGUSR1 collectd",
-             user        => root,
-             minute      => '0',
-             hour        => '*/2'
-          }
+#    cron {'collectd_flush_cache':
+#             ensure      => present,
+#             command     => "/usr/bin/killall -SIGUSR1 collectd",
+#             user        => root,
+#             minute      => '0',
+#             hour        => '*/2'
+#          }
 
 
    service { "collectd":
