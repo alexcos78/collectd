@@ -39,7 +39,7 @@ class collectd::setup::debian (
                    }
                    
 
-   file { "/etc/collectd.conf":
+   file { "/etc/collectd/collectd.conf":
          ensure   => file,
          owner    => "root",
          group    => "root",
@@ -64,7 +64,7 @@ class collectd::setup::debian (
                              hasstatus   => true,
                              hasrestart  => true,
                              require     => Package[$collectdpackages],
-                             subscribe   => File['/etc/collectd.conf'],
+                             subscribe   => File['/etc/collectd/collectd.conf'],
                     }
                     
        
