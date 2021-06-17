@@ -26,7 +26,14 @@ See INFN Cloud documentation for accounting - (add link)
 A local accounting server neede to be setup
 
 ## Usage
-TODO
+Define the `influxdb_collectd_host` varaible
+
+```bash
+node default {
+ class { 'collectd' :
+   influxdb_collectd_host => 'accounting.novalocal'
+ }
+```
 
 ## Reference
 INFN Cloud [1]
